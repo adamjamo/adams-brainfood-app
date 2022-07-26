@@ -8,6 +8,7 @@
     margin: 20px;
 margin: auto;
     font-size: 50px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
 
@@ -18,4 +19,59 @@ border-radius: 10px;
 padding: 10px;
     box-shadow: rgba(149, 157, 165, 2) 0px 8px 24px;
     margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
 }
+
+
+
+.post-title {
+font-size: 10px
+
+
+}
+
+
+
+.post-body {
+    font-size: 10px
+    
+    
+    }
+
+    
+    .post-topic {
+font-size: 10px
+
+
+}
+
+
+.post-comments {
+    font-size: 10px
+    
+    
+    }
+
+
+    .post-author {
+        font-size: 10px
+        
+        
+        }
+
+        .post-created-at {
+            font-size: 10px
+            
+            
+            }
+            
+
+            .post-vote-count {
+                font-size: 10px
+                
+                
+                }
+                
+        
+    
