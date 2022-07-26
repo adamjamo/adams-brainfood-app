@@ -27,13 +27,10 @@ function DataFetching(post, user) {
               {post.title}
               <p className="post-body">BODY:</p>
               {post.body}
-              <p className="post-topic">#TOPIC </p>
-              {post.topic}
-
+              <p className="post-topic">#TOPIC </p>#{post.topic}
               <p className="post-comments">COMMENT COUNT: </p>
               {post.comment_count}
-              <p className="post-author">WRITTEN BY:</p>
-              {post.author}
+              <p className="post-author">WRITTEN BY:</p>@{post.author}
               <p className="post-created-at">CREATED AT:</p>
               {post.created_at}
               <p className="post-vote-count">VOTE COUNT:</p>

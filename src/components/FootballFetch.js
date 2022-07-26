@@ -31,19 +31,19 @@ function FootballFetch() {
         <section className="post-card">
           <div className="post-details">
             <div className="post-name-desc">
-              <p className="post-title">TITLE:{post.title}</p>
-              <p className="post-body">BODY:{post.body}</p>
+              <p className="post-title">TITLE:</p>
+              {post.title}
+              <p className="post-body">BODY:</p>
+              {post.body}
+              <p className="post-topic">#TOPIC </p>#{post.topic}
+              <p className="post-comments">COMMENT COUNT: </p>
+              {post.comment_count}
+              <p className="post-author">WRITTEN BY:</p>@{post.author}
+              <p className="post-created-at">CREATED AT:</p>
+              {post.created_at}
+              <p className="post-vote-count">VOTE COUNT:</p>
+              {post.votes}
             </div>
-            <div className="post-topic">
-              <p>#TOPIC {post.topic}</p>
-            </div>
-          </div>
-
-          <div className="post-data">
-            <p className="post-comments">COMMENT COUNT: {post.comment_count}</p>
-            <p className="post-author">WRITTEN BY: {post.author}</p>
-            <p className="post-created-at">CREATED AT:{post.created_At}</p>
-            <p className="post-vote-count">VOTE COUNT:{post.votes}</p>
           </div>
         </section>
       ))}

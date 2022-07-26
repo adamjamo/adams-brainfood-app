@@ -1,7 +1,7 @@
 import "../css/cooking.css";
 import React from "react";
+import "../css/articles.css";
 
-import "../css/homepage.css";
 import CodingFetch from "../components/CodingFetch";
 
 export default function Coding() {
