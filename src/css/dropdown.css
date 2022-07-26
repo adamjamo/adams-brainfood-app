@@ -1,0 +1,107 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+
+.main-drop-down {
+    margin: auto;
+    text-align: center;
+    font-family: 'Gloria Hallelujah', sans-serif;
+    background-color:  rgb(119, 201, 226);
+width: 670px;
+    height: 40px;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    box-shadow: 0 30px 10px 0 rgba(0,0,0,.2);
+    border-color: black;
+    border-width: 100px;
+    border-radius: 10px;
+}
+
+
+
+.DropDownContainer {
+
+    border-color: black;
+    border-width: 100px;
+    
+    border-radius: 10px;
+}
+
+
+
+.DropDownHeader {
+    border-color: black;
+    border-width: 100px;
+text-align: center;
+margin:auto;
+color: black;
+}
+
+.DropDownHeader:hover {
+    border-color: black;
+    border-width: 100px;
+    text-align: center;
+    color: grey;
+    cursor: pointer;
+    }
+
+.DropDownListContainer {
+    border-color: black;
+    border-width: 100px;
+    color: black;
+    background-color: rgb(119, 201, 226);
+    text-align: center;
+    }
+
+
+    .DropDownList {
+        border-color: black;
+        border-width: 100px;
+        color: black;
+          }
+      
+
+
+    
+
+
+ .cooking{
+    background-color: blue;
+     font-family: 'Gloria Hallelujah', sans-serif;
+cursor: pointer;
+}
+
+
+    
+.cooking:hover{
+background-color: yellow;
+cursor: pointer;
+}
+
+
+
+
+
+.select-your-topic{
+    background-color:  rgb(119, 201, 226);
+    cursor: pointer;
+    font-family: 'Gloria Hallelujah', sans-serif;
+    padding: 0;
+border: none;
+background: none;
+    }
+
+
+
+
+.select-your-topic:hover{
+    background-color:  rgb(119, 201, 226);
+    cursor: pointer;
+    font-family: 'Gloria Hallelujah', sans-serif;
+color: rgb(249, 114, 202);
+border: none;
+
+    }
+
+
+
+

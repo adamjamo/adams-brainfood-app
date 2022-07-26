@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+
+
+nav {
+    width: 400%;
+    display: flex;
+    text-align: center;
+    margin: auto;
+    justify-content: space-between;
+    padding: 1rem 0;
+    box-shadow: 0 5px 4px 0 rgba(0,0,0,.2);
+    border-radius: 10px;
+    background-color: rgb(249, 114, 202);
+    margin-bottom: 1rem;
+    color: black;
+    font-family: 'Gloria Hallelujah', sans-serif;
+    font-size: 70px;
+  }
+  
+
+  .nav-title-2 {
+    text-decoration: none;
+    width: 300px;
+    border: 1px solid black;
+    padding: 0px;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    margin-left: 500px;
+    font-size: 2rem;
+  }
+  
+  .nav-title:hover {
+    text-decoration: none;
+    color: inherit;
+    font-size: 2rem;
+    color: rgb(255, 255, 0);
+  }
+  
+  
+  .nav-inner {
+  
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+
+
+
+
+  .nav-title-home {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+  text-align: center;
+  margin-right: 100px;
+  }
+
+  .nav-title-home:hover {
+    color:rgb(255, 255, 0);
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  
+  
+  
+
+  
+  .nav-title-cooking{
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+  text-align: center;
+  margin-right: 100px;
+  
+  }
+  
+  .nav-title-cooking:hover{
+    color:rgb(255, 255, 0);
+    font-weight: bold;
+    text-decoration: none;
+  
+  
+  }
+
+
+
+  .nav-title-coding {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+  text-align: center;
+  margin-right: 100px;
+    
+    }
+    .nav-title-coding:hover {
+        color:rgb(255, 255, 0);
+        font-weight: bold;
+        text-decoration: none;
+      
+      }
+
+
+  .nav-title-football{
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+  text-align: center;
+  margin-right: 100px;
+    
+    }
+    .nav-title-football:hover {
+        color:rgb(255, 255, 0);
+        font-weight: bold;
+        text-decoration: none;
+      
+      }
+  
+ 
+
+      .nav-title-post{
+        color: black;
+        font-weight: bold;
+        text-decoration: none;
+      text-align: center;
+      margin-right: 100px;
+        
+        }
+        .nav-title-post:hover {
+            color:rgb(255, 255, 0);
+            font-weight: bold;
+            text-decoration: none;
+          
+          }
+      
+     
