@@ -1,10 +1,3 @@
-// import React from "react";
-// import { Link } from "react-router-dom";
-
-// export default function Navbar() {
-//   return <div className="container nav-inner"> hi</div>;
-// }
-
 import "../css/nav.css";
 
 import { Link } from "react-router-dom";
@@ -22,23 +15,18 @@ export default function Navbar() {
           </Link>
         </div>
         <div>
-          <Link to="/cooking" className="nav-title-cooking">
+          <Link to="/articles/topics/cooking" className="nav-title-cooking">
             Cooking
           </Link>
         </div>
         <div>
-          <Link to="/coding" className="nav-title-coding">
+          <Link to="/articles/topics/coding" className="nav-title-coding">
             Coding
           </Link>
         </div>
         <div>
-          <Link to="/football" className="nav-title-football">
+          <Link to="/articles/topics/football" className="nav-title-football">
             Football
-          </Link>
-        </div>
-        <div>
-          <Link to="/post" className="nav-title-post">
-            Post
           </Link>
         </div>
       </div>

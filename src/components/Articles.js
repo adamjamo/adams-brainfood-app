@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
-
-import SearchBar from "../components/SearchBar";
 import "../css/articles.css";
-
 import axios from "axios";
 
-export default function HomePage() {
+import { useParams, useNavigate } from "react-router-dom";
+
+function Articles() {
   const [posts, setPosts] = useState([]);
+  const { topic } = useParams();
+  const navigate = useNavigate();
 
   useEffect((filteredTopics) => {
     axios
-      .get(`https://adam-nc-news.herokuapp.com/api/articles`)
+      .get(`https://adam-nc-news.herokuapp.com/api/articles?topic=${topic}`)
       .then((res) => {
         setPosts(res.data.articles);
       })
@@ -19,9 +20,12 @@ export default function HomePage() {
   });
 
   return (
-    <>
-      <ul>
-        {posts.map((post) => (
+    <ul>
+      {posts.map((post) => (
+        <button
+          className={`${posts.article_id}-button`}
+          onClick={() => navigate(`/${posts.article_id}`)}
+        >
           <section className="post-card">
             <div className="post-details">
               <div className="post-name-desc">
@@ -40,10 +44,10 @@ export default function HomePage() {
               </div>
             </div>
           </section>
-        ))}
-      </ul>
-
-      <SearchBar />
-    </>
+        </button>
+      ))}
+    </ul>
   );
 }
+
+export default Articles;
