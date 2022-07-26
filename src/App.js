@@ -19,7 +19,10 @@ export default function App() {
 
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/:article_id" element={<Articles />} />
             <Route path="/articles/topics/:topic" element={<Articles />} />
+
+            <Route path="/articles/:article_id" element={<Articles />} />
           </Routes>
         </>
       </BrowserRouter>

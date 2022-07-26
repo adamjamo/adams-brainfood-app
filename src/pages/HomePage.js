@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 
 import SearchBar from "../components/SearchBar";
 import "../css/articles.css";
@@ -8,8 +7,6 @@ import axios from "axios";
 
 export default function HomePage() {
   const [posts, setPosts] = useState([]);
-
-  const { topic } = useParams();
 
   useEffect((filteredTopics) => {
     axios
