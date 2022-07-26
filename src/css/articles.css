@@ -14,4 +14,8 @@ margin: auto;
 .post-card {
 
     background-color: rgb(123, 206, 239);
+border-radius: 10px;
+padding: 10px;
+    box-shadow: rgba(149, 157, 165, 2) 0px 8px 24px;
+    margin-bottom: 10px;
 }
