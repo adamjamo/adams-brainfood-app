@@ -2,24 +2,18 @@ import React, { useState, useEffect } from "react";
 import "../css/articles.css";
 import axios from "axios";
 
-function CodingFetch() {
+import { useParams } from "react-router-dom";
+
+function Articles() {
   const [posts, setPosts] = useState([]);
 
-  const newArr = [];
+  const { topic } = useParams();
 
-  useEffect(() => {
+  useEffect((filteredTopics) => {
     axios
-      .get("https://adam-nc-news.herokuapp.com/api/articles")
+      .get(`https://adam-nc-news.herokuapp.com/api/articles?topic=${topic}`)
       .then((res) => {
-        const target = res.data.articles;
-
-        for (let i = 0; i < target.length; i++) {
-          if (target[i].topic === "coding") {
-            newArr.push(target[i]);
-          }
-
-          setPosts(newArr);
-        }
+        setPosts(res.data.articles);
       })
 
       .catch((err) => {});
@@ -35,8 +29,7 @@ function CodingFetch() {
               {post.title}
               <p className="post-body">BODY:</p>
               {post.body}
-              <p className="post-topic">#TOPIC </p>
-              #{post.topic}
+              <p className="post-topic">#TOPIC </p>#{post.topic}
               <p className="post-comments">COMMENT COUNT: </p>
               {post.comment_count}
               <p className="post-author">WRITTEN BY:</p>@{post.author}
@@ -52,4 +45,4 @@ function CodingFetch() {
   );
 }
 
-export default CodingFetch;
+export default Articles;
