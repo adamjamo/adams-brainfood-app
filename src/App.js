@@ -3,8 +3,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
 import Header from "./components/Header";
-
+import IndividualArticle from "./components/IndividualArticle";
 import Navbar from "./components/Nav";
+import "./css/App.css";
 
 import Articles from "./components/Articles";
 
@@ -19,10 +20,9 @@ export default function App() {
 
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/:article_id" element={<Articles />} />
             <Route path="/articles/topics/:topic" element={<Articles />} />
 
-            <Route path="/articles/:article_id" element={<Articles />} />
+            <Route path="/:article_id" element={<IndividualArticle />} />
           </Routes>
         </>
       </BrowserRouter>

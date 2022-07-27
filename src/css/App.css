@@ -1,16 +1,58 @@
+
+.body{
+
+
+
+  background-color: aliceblue;
+}
+
+
 .left, .right {
-    float: left;
-    width: 20%; /* The width is 20%, by default */
+  float: left;
+  width: 20%; /* The width is 20%, by default */
+}
+
+.main {
+  float: left;
+  width: 20%; /* The width is 20%, by default */
+background-color: aliceblue;
+}
+
+/* Use a media query to add a breakpoint at 800px: */
+@media screen and (max-width: 800px) {
+  .left, .main, .right {
+    width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
   }
-  
-  .main {
-    float: left;
-    width: 20%; /* The width is 20%, by default */
-  }
-  
-  /* Use a media query to add a breakpoint at 800px: */
-  @media screen and (max-width: 800px) {
-    .left, .main, .right {
-      width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
-    }
-  }
+}
+
+
+
+.vote-button {
+
+
+}
+
+
+.vote-button:hover {
+
+  cursor: pointer
+}
+
+
+
+.comment-box {
+width: 1200px;
+  background-color: aqua;
+    padding: 10px;
+  border-radius: 10px;
+}
+
+
+
+.Article_container {
+  width: 1200px;
+  background-color: blueviolet;
+
+  padding: 10px;
+  border-radius: 10px;
+}

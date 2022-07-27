@@ -5,9 +5,9 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 
 function Articles() {
+  const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const { topic } = useParams();
-  const navigate = useNavigate();
 
   useEffect((filteredTopics) => {
     axios
@@ -24,13 +24,16 @@ function Articles() {
       {posts.map((post) => (
         <button
           className={`${posts.article_id}-button`}
-          onClick={() => navigate(`/${posts.article_id}`)}
+          onClick={() => navigate(`/${post.article_id}`)}
         >
           <section className="post-card">
             <div className="post-details">
+              <div className="avatar-user"></div>
               <div className="post-name-desc">
                 <p className="post-title">TITLE:</p>
                 {post.title}
+                <p className="article-id">ID:</p>
+                {post.article_id}
                 <p className="post-body">BODY:</p>
                 {post.body}
                 <p className="post-topic">#TOPIC </p>#{post.topic}
@@ -41,6 +44,9 @@ function Articles() {
                 {post.created_at}
                 <p className="post-vote-count">VOTE COUNT:</p>
                 {post.votes}
+              </div>
+              <div>
+                <button className="read-article-button"> Read Article</button>
               </div>
             </div>
           </section>
