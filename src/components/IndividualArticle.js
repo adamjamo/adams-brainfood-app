@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { useState } from "react";
 import "../css/App.css";
 
+import VoteFunction from "./VoteFunction";
+
 function IndividualArticle() {
   const articleIdRoute = window.location.pathname;
   const [commentData, setCommentData] = useState([]);
