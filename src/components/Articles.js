@@ -7,12 +7,14 @@ import { useParams } from "react-router-dom";
 
 function Articles() {
   const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const { topic } = useParams();
 
   useEffect((filteredTopics) => {
     axios
       .get(`https://adam-nc-news.herokuapp.com/api/articles?topic=${topic}`)
       .then((res) => {
+        setIsLoading(false);
         setPosts(res.data.articles);
       })
 
@@ -21,6 +23,7 @@ function Articles() {
 
   return (
     <ul>
+      {isLoading && <div>Loading...</div>}
       {posts.map((post) => (
         <section className="post-card">
           <div>

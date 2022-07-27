@@ -8,10 +8,12 @@ function Articles() {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
 
+  const [isLoading, setIsLoading] = useState(true);
   useEffect((filteredTopics) => {
     axios
       .get(`https://adam-nc-news.herokuapp.com/api/articles`)
       .then((res) => {
+        setIsLoading(false);
         setPosts(res.data.articles);
       })
 
@@ -20,6 +22,7 @@ function Articles() {
 
   return (
     <ul>
+      {isLoading && <div>Loading...</div>}
       {posts.map((post) => (
         <section className="post-card">
           <div>
