@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+
+
+
 .the-article {
     text-align: center;
     width: 20px;
@@ -96,7 +100,27 @@ font-size: 10px
         
     
 
- .read-article-button {
+
+
+
+.oops-error{
+
+    font-size: 100px;
+display: flex;
+
+    font-family: 'Gloria Hallelujah', sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+.link-to-article {
     display:flex;
   justify-content:space-between;
 margin-left: 1000px;
@@ -106,7 +130,7 @@ font-size: xx-large;
 
 
 
-                .read-article-button:hover {
+                .link-to-article:hover {
                     display:flex;
                   justify-content:space-between;
                 margin-left: 1000px;
@@ -114,3 +138,6 @@ font-size: xx-large;
                 font-size: xx-large;
                 cursor: pointer;
                                 }
+
+
+

@@ -7,7 +7,7 @@ function IndividualArticle() {
   const articleIdRoute = window.location.pathname;
   const [commentData, setCommentData] = useState([]);
   const [articleData, setArticleData] = useState([]);
-  const [isloading, setIsLoading] = useState([]);
+  const [isloading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch(`https://adam-nc-news.herokuapp.com/api/articles${articleIdRoute}`)
@@ -38,31 +38,35 @@ function IndividualArticle() {
   }, []);
 
   return (
-    <div className="Individual_article_container">
-      <div className="Article_container">
-        <h2>{articleData.title}</h2>
+    <div className="Article_container">
+      <ul>
+        <li>{articleData.title}</li>
 
-        <h3> Author: {articleData.author}</h3>
-        <h2> Article Votes:{articleData.votes}</h2>
+        <li> Author: {articleData.author}</li>
+        <li> Article Votes:{articleData.votes}</li>
 
-        <h4 className="vote-button">
+        <li className="vote-button">
           <button> Vote this! </button>
-        </h4>
-        <p>{articleData.body}</p>
-      </div>
-      <h2 className="comment-box">
+        </li>
+        <li>{articleData.body}</li>
+      </ul>
+
+      <div className="comment-box">
         Comments:
         {commentData.map((comment) => {
           return (
             <div className="comment_container">
-              <h5>user:{comment.author}</h5>
-              <h6>Comment votes:{comment.votes}</h6>
-              <p>{comment.body}</p>
+              <ul>
+                <li>user:{comment.author}</li>
+                <li>Comment votes:{comment.votes}</li>
+                <li>{comment.body}</li>
+              </ul>
             </div>
           );
         })}
-      </h2>
+      </div>
     </div>
   );
 }
+
 export default IndividualArticle;
