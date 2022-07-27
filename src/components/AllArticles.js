@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "../css/articles.css";
 import axios from "axios";
-
 import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Articles() {
+  const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const { topic } = useParams();
 
+  const [isLoading, setIsLoading] = useState(true);
   useEffect((filteredTopics) => {
     axios
-      .get(`https://adam-nc-news.herokuapp.com/api/articles?topic=${topic}`)
+      .get(`https://adam-nc-news.herokuapp.com/api/articles`)
       .then((res) => {
         setIsLoading(false);
         setPosts(res.data.articles);

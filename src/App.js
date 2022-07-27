@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import Header from "./components/Header";
 import IndividualArticle from "./components/IndividualArticle";
+import AllArticles from "./components/AllArticles";
 import Navbar from "./components/Nav";
 import "./css/App.css";
 
@@ -21,6 +22,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/articles/topics/:topic" element={<Articles />} />
+            <Route path="/articles" element={<AllArticles />} />
 
             <Route path="/:article_id" element={<IndividualArticle />} />
           </Routes>
