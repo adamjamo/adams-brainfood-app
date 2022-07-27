@@ -7,7 +7,7 @@ function IndividualArticle() {
   const articleIdRoute = window.location.pathname;
   const [commentData, setCommentData] = useState([]);
   const [articleData, setArticleData] = useState([]);
-  const [isloading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch(`https://adam-nc-news.herokuapp.com/api/articles${articleIdRoute}`)
@@ -15,10 +15,10 @@ function IndividualArticle() {
         return response.json();
       })
       .then((data) => {
+        setIsLoading(false);
         setArticleData(() => {
           return data.article;
         });
-        setIsLoading(false);
       });
   }, []);
 
@@ -40,6 +40,7 @@ function IndividualArticle() {
   return (
     <div className="Article_container">
       <ul>
+        {isLoading && <div>Loading...</div>}
         <li>{articleData.title}</li>
 
         <li> Author: {articleData.author}</li>
