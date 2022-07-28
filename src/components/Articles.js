@@ -36,7 +36,7 @@ function Articles() {
             <ul>
               <li>{post.title}</li>
 
-              <li> {post.article_id}</li>
+              <li>Article ID: {post.article_id}</li>
 
               <li>{post.body}</li>
 
@@ -47,8 +47,6 @@ function Articles() {
               <li>@{post.author}</li>
 
               <li>{post.created_at}</li>
-
-              <li> {post.votes}</li>
             </ul>
           </div>
         </section>
