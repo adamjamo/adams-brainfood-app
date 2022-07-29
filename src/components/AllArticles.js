@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "../css/articles.css";
 import axios from "axios";
+
+import SortComponent from "./SortComponent";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 function Articles() {
-  const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
@@ -22,34 +22,29 @@ function Articles() {
 
   return (
     <ul>
-      {isLoading && <div>Loading...</div>}
+      {isLoading && <div className="all-articles-loading">Loading...</div>}
       {posts.map((post) => (
         <section className="post-card">
-          <div>
-            <Link to={`/${post.article_id}`} className="link-to-article">
-              Read Article!
-            </Link>
-          </div>
+          <div></div>
 
-          <div className="post-details">
-            <ul>
-              <li>{post.title}</li>
+          <h1>{post.title}</h1>
 
-              <li> {post.article_id}</li>
+          <p> {post.article_id}</p>
 
-              <li>{post.body}</li>
+          <p>{post.body}</p>
 
-              <li>#{post.topic}</li>
+          <p>#{post.topic}</p>
 
-              <li> {post.comment_count}</li>
+          <p> {post.comment_count}</p>
 
-              <li>@{post.author}</li>
+          <p>@{post.author}</p>
 
-              <li>{post.created_at}</li>
+          <p>{post.created_at}</p>
 
-              <li> {post.votes}</li>
-            </ul>
-          </div>
+          <p> {post.votes}</p>
+          <Link to={`/articles/${post.article_id}`} className="link-to-article">
+            Click To Read Article!
+          </Link>
         </section>
       ))}
     </ul>

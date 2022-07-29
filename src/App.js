@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
 import Header from "./components/Header";
+import DeleteComment from "./components/DeleteComment";
 import IndividualArticle from "./components/IndividualArticle";
 import AllArticles from "./components/AllArticles";
 import Navbar from "./components/Nav";
@@ -23,8 +24,12 @@ export default function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/articles/topics/:topic" element={<Articles />} />
             <Route path="/articles" element={<AllArticles />} />
+            <Route path="/comments/:comment_id" element={<DeleteComment />} />
 
-            <Route path="/:article_id" element={<IndividualArticle />} />
+            <Route
+              path="/articles/:article_id"
+              element={<IndividualArticle />}
+            />
           </Routes>
         </>
       </BrowserRouter>

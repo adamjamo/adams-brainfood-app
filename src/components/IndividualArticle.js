@@ -2,22 +2,24 @@ import "../css/App.css";
 import { useEffect } from "react";
 import { useState } from "react";
 import "../css/App.css";
+import HandleVotes from "./HandleVotes";
+import Header from "./Header";
+import DeleteComment from "./DeleteComment";
 
-import GetVoteNumber from "./GetVoteNumber";
-import HelloNinja from "./HelloNinja";
+import { useParams } from "react-router-dom";
+
+import HandleCommentSubmit from "./HandleCommentSubmit";
+import SortComponent from "./SortComponent";
 
 function IndividualArticle() {
-  const articleIdRoute = window.location.pathname;
   const [commentData, setCommentData] = useState([]);
   const [articleData, setArticleData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  const [voteCount, setVoteCount] = useState(0);
-
+  const { article_id } = useParams();
   const [err, setErr] = useState("");
 
   useEffect(() => {
-    fetch(`https://adam-nc-news.herokuapp.com/api/articles${articleIdRoute}`)
+    fetch(`https://adam-nc-news.herokuapp.com/api/articles/${article_id}`)
       .then((response) => {
         return response.json();
       })
@@ -31,111 +33,82 @@ function IndividualArticle() {
 
   useEffect(() => {
     fetch(
-      `https://adam-nc-news.herokuapp.com/api/articles${articleIdRoute}/comments`
+      `https://adam-nc-news.herokuapp.com/api/articles/${article_id}/comments`
     )
       .then((response) => {
         return response.json();
       })
       .then((data) => {
+        setIsLoading(false);
         setCommentData(() => {
           return data.comments;
         });
-        setIsLoading(false);
       });
   }, []);
 
-  const HandleUpVotes = () => {
-    setIsLoading(true);
-    setVoteCount(+1);
-    setErr(null);
-    fetch(`https://adam-nc-news.herokuapp.com/api/articles${articleIdRoute}`, {
-      method: "PATCH",
-      body: JSON.stringify({
-        votes: voteCount,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((response) => response.json())
-      .then((json) => setArticleData(json.article), setIsLoading(false))
-
-      .catch((err) => {
-        setVoteCount(-1);
-        setErr("Something went wrong, please try again.");
-      });
-  };
-
-  const HandleDownVotes = () => {
-    setIsLoading(true);
-    setVoteCount(-1);
-    setErr(null);
-    fetch(`https://adam-nc-news.herokuapp.com/api/articles${articleIdRoute}`, {
-      method: "PATCH",
-      body: JSON.stringify({
-        votes: voteCount,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((response) => response.json())
-      .then((json) => setArticleData(json.article), setIsLoading(false))
-      .catch((err) => {
-        setVoteCount(+1);
-        setErr("Something went wrong, please try again.");
-      });
-  };
-
-  const HandleNewComment = () => {
-    setIsLoading(true);
-
-    setErr(null);
-    fetch(
-      `https://adam-nc-news.herokuapp.com/api/articles${articleIdRoute}/comments`,
-      {
-        method: "POST",
-        body: JSON.stringify({
-          comments: "NEW COMMENT ADDED!",
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((json) => setCommentData(json.article), setIsLoading(false))
-      .catch((err) => {
-        setErr("Something went wrong, please try again.");
-      });
-  };
-
   return (
-    <div className="Article_container">
-      <ul>
-        {isLoading && <div>Loading...</div>}
-        <button onClick={HandleUpVotes}> VOTE UP</button>
-        <button onClick={HandleDownVotes}> VOTE DOWN</button>
-        <button onClick={HandleNewComment}> ADD COMMENT</button>
-        <li>{articleData.title}</li>
-        <p>Votes:{articleData.votes}</p>
-        <li> Author: {articleData.author}</li>
+    <div>
+      {err && <div> {err}</div>}
+      {isLoading && (
+        <div className="individual-articles-loading">Loading...</div>
+      )}
 
-        <li>{articleData.body}</li>
-      </ul>
-      <div className="comment-box">
-        Comments:
-        {commentData.map((comment) => {
-          return (
-            <div className="comment_container">
-              <ul>
-                <li>user:{comment.author}</li>
-                <li>Comment votes:{comment.votes}</li>
-                <li>{comment.body}</li>
-              </ul>
+      <div className="Article_container">
+        <div className="vote-button"></div>
+        <ul>
+          <li>{articleData.title}</li>
+          <p>Votes:{articleData.votes}</p>
+          <li> Author: {articleData.author}</li>
+
+          <li>{articleData.body}</li>
+          <p>
+            <div>
+              <HandleVotes
+                article_id={articleData.article_id}
+                articleData={articleData}
+                setArticleData={setArticleData}
+              />
             </div>
-          );
-        })}
+          </p>
+        </ul>
+
+        <div className="comment-box">
+          Comments:
+          <div>
+            <HandleCommentSubmit
+              article_id={articleData.article_id}
+              articleData={articleData}
+              setArticleData={setArticleData}
+              commentData={commentData}
+              setCommentData={setCommentData}
+              comment={commentData.body}
+            />
+          </div>
+          {commentData.map((comment) => {
+            return (
+              <div key={comment.comment_id} className="comment_container">
+                {comment.author === "jessjelly" && (
+                  <DeleteComment
+                    author={comment.author}
+                    article_id={articleData.article_id}
+                    articleData={articleData}
+                    setArticleData={setArticleData}
+                    commentData={commentData}
+                    comment_id={comment.comment_id}
+                    setCommentData={setCommentData}
+                  />
+                )}
+                <ul>
+                  <li>user:{comment.author}</li>
+                  <li>Comment votes:{comment.votes}</li>
+                  <li>THE COMMENT ID {comment.comment_id}</li>
+                  <li>{comment.body}</li>
+                </ul>
+                <div></div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
