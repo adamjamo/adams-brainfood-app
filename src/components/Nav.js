@@ -8,7 +8,7 @@ export default function Navbar() {
   return (
     <nav className="navBar">
       <div className="bar">
-        <Link to="/">Home</Link>
+        <Link to="/articles">Home</Link>
       </div>
       <div className="bar">
         <Link to="/articles/topics/cooking">Cooking</Link>

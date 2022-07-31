@@ -34,7 +34,7 @@ function Articles() {
         return response.json();
       })
       .then((data) => {
-        setArticleData(() => {
+        setPosts(() => {
           return data.articles;
         });
         setIsLoading(false);

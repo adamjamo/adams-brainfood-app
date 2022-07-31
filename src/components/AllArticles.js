@@ -10,16 +10,19 @@ function Articles() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  useEffect((filteredTopics) => {
-    axios
-      .get(`https://adam-nc-news.herokuapp.com/api/articles`)
-      .then((res) => {
-        setIsLoading(false);
-        setPosts(res.data.articles);
-      })
 
-      .catch((err) => {});
-  });
+  useEffect(() => {
+    fetch(`https://adam-nc-news.herokuapp.com/api/articles?${searchParams}`)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setPosts(() => {
+          return data.articles;
+        });
+        setIsLoading(false);
+      });
+  }, [searchParams]);
 
   const HandleSortBy = (event) => {
     event.preventDefault();
