@@ -21,6 +21,7 @@ export default function App() {
           <Navbar />
 
           <Routes>
+            <Route path="/" element={<HomePage />} />
             <Route path="/articles" element={<HomePage />} />
             <Route path="/articles/topics/:topic" element={<Articles />} />
 
