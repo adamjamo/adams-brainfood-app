@@ -8,7 +8,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 function Articles() {
   const [posts, setPosts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const { topic } = useParams();
   const [articleData, setArticleData] = useState([]);
   const [authorData, setAuthorData] = useState([]);
@@ -20,11 +20,13 @@ function Articles() {
     axios
       .get(`https://adam-nc-news.herokuapp.com/api/articles?topic=${topic}`)
       .then((res) => {
-        setIsLoading(false);
         setPosts(res.data.articles);
+        setIsLoading(false);
       })
 
-      .catch((err) => {});
+      .catch((err) => {
+        console.log("did you misspell that?");
+      });
   });
 
   useEffect(() => {
@@ -45,37 +47,10 @@ function Articles() {
       });
   }, [searchParams]);
 
-  const HandleSortBy = (event) => {
-    event.preventDefault();
-    setIsLoading(true);
-    if (event.target.value === "created_atO") {
-      setSearchParams({ sort_by: "created_at", order: "ASC" });
-    } else if (event.target.value === "votesL") {
-      setSearchParams({ sort_by: "votes", order: "ASC" });
-    } else {
-      setSearchParams({ sort_by: event.target.value });
-      setIsLoading(false);
-    }
-  };
-  if (error) {
-    return <h2> message={error} </h2>;
-  }
-
   return (
-    <div>
+    <ul>
       {isLoading && <div className="topic-articles-loading">Loading...</div>}
-      <div className="sortby_container">
-        <label for="sortBy"> Sort by:</label>
-        <select id="sort" name="sortby" onChange={HandleSortBy}>
-          <option value="author">Author</option>
-          <option value="title">Title</option>
-          <option value="topic">Topic</option>
-          <option value="created_at">Newest</option>
-          <option value="created_atO">Oldest</option>
-          <option value="votes">Top voted</option>
-          <option value="votesL">Least voted</option>
-        </select>
-      </div>
+
       {posts.map((post) => (
         <section className="post-card">
           <div className="post-details">
@@ -106,7 +81,7 @@ function Articles() {
           </div>
         </section>
       ))}
-    </div>
+    </ul>
   );
 }
 

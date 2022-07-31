@@ -5,13 +5,14 @@ import { useSearchParams } from "react-router-dom";
 import SortComponent from "./SortComponent";
 import { Link } from "react-router-dom";
 
-function Articles() {
+function AllArticles() {
   const [posts, setPosts] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch(`https://adam-nc-news.herokuapp.com/api/articles?${searchParams}`)
       .then((response) => {
         return response.json();
@@ -21,6 +22,10 @@ function Articles() {
           return data.articles;
         });
         setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setError({ err });
       });
   }, [searchParams]);
 
@@ -82,4 +87,4 @@ function Articles() {
   );
 }
 
-export default Articles;
+export default AllArticles;

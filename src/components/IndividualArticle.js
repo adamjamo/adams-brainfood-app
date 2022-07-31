@@ -8,9 +8,6 @@ import DeleteComment from "./DeleteComment";
 
 import { useParams } from "react-router-dom";
 
-import HandleCommentSubmit from "./HandleCommentSubmit";
-import SortComponent from "./SortComponent";
-
 function IndividualArticle({ addTask }) {
   const [newComment, setNewComment] = useState("");
 
@@ -76,7 +73,6 @@ function IndividualArticle({ addTask }) {
 
   return (
     <div>
-      {err && <div> {err}</div>}
       {isLoading && (
         <div className="individual-articles-loading">Loading...</div>
       )}
