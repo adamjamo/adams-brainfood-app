@@ -17,12 +17,19 @@ box-shadow: 0 5px 4px 0 rgba(0,0,0,.2);
     background-color: rgba(230, 67, 208, 0.795) ;
     margin-bottom: 1rem;
 
-    font-family: 'Gloria Hallelujah', sans-serif;
+text-decoration: none;
 
     font-size: 20px;
-
+color: black;
   }
 
+
+  .navBar a{
+
+    text-decoration: none;
+    font-family:'Gloria Hallelujah', sans-serif ;
+    color: black;
+  }
 
   .bar{
 

@@ -9,9 +9,15 @@ export default function Header({ article_id }) {
     <div>
       <div className="hello-user">Hello @jessjelly!</div>
       <div className="logo-app">
-        {<img class="the-pic" src={BRAINFOODLOGO} />}
+        {
+          <a href="/">
+            <img class="the-pic" src={BRAINFOODLOGO} />{" "}
+          </a>
+        }
       </div>
-      <div className="text">brainfood</div>
+      <div className="text">
+        <a href="/">brainfood </a>
+      </div>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../css/articles.css";
-
+import SortBy from "./SortComponent";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -15,7 +15,6 @@ function Articles() {
   const [userInfo, setUserInfo] = useState({});
   const [searchParams, setSearchParams] = useSearchParams();
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -49,12 +48,13 @@ function Articles() {
   const HandleSortBy = (event) => {
     event.preventDefault();
     setIsLoading(true);
-    if (event.target.value === "created_at") {
+    if (event.target.value === "created_atO") {
       setSearchParams({ sort_by: "created_at", order: "ASC" });
     } else if (event.target.value === "votesL") {
       setSearchParams({ sort_by: "votes", order: "ASC" });
     } else {
       setSearchParams({ sort_by: event.target.value });
+      setIsLoading(false);
     }
   };
   if (error) {
@@ -62,7 +62,7 @@ function Articles() {
   }
 
   return (
-    <ul>
+    <div>
       {isLoading && <div className="topic-articles-loading">Loading...</div>}
       <div className="sortby_container">
         <label for="sortBy"> Sort by:</label>
@@ -78,22 +78,24 @@ function Articles() {
       </div>
       {posts.map((post) => (
         <section className="post-card">
-          <div></div>
-
           <div className="post-details">
             <ul>
               <h1>{post.title}</h1>
-
+              <br></br>
               <p>Article ID: {post.article_id}</p>
+              <br></br>
 
-              <p>{post.body}</p>
-              <p>#{post.topic}</p>
+              <em>
+                <p>{post.body}</p>
+              </em>
+              <br></br>
+              <p className="topic-bold">#{post.topic}</p>
+              <br></br>
+              <p>Comments: {post.comment_count}</p>
+              <br></br>
+              <p>Article by @{post.author}</p>
+              <br></br>
 
-              <p> {post.comment_count}</p>
-
-              <p>@{post.author}</p>
-
-              <p>{post.created_at}</p>
               <Link
                 to={`/articles/${post.article_id}`}
                 className="link-to-article"
@@ -104,7 +106,7 @@ function Articles() {
           </div>
         </section>
       ))}
-    </ul>
+    </div>
   );
 }
 

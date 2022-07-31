@@ -4,12 +4,10 @@ import "../css/App.css";
 
 export default function DeleteComment({
   comment_id,
-
   commentData,
   setCommentData,
 }) {
   const [isLoading, setIsLoading] = useState("");
-
   const [err, setErr] = useState("");
 
   const handleDelete = (event) => {

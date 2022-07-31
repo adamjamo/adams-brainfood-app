@@ -1,6 +1,6 @@
 body {
-  background-image: url("../img/APPBG.png");
-  background-color:#a7e3f4;
+
+  background-image: linear-gradient(rgb(130, 209, 236),rgb(255, 255, 255),rgb(140, 210, 234));
 }
 
 
@@ -59,4 +59,21 @@ padding: 2px;
 .submit-comment{
   margin-left: 40px;
   border-radius: 20px;
+}
+
+
+
+.the-comment{
+
+  font-size: 20px;
+}
+
+
+
+
+.article-body {
+
+
+  font-size: 20px;
+  text-decoration: italic;
 }

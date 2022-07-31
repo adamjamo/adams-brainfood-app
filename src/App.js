@@ -23,7 +23,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/articles/topics/:topic" element={<Articles />} />
-            <Route path="/articles" element={<AllArticles />} />
+            <Route path="/allarticles" element={<AllArticles />} />
             <Route path="/comments/:comment_id" element={<DeleteComment />} />
 
             <Route

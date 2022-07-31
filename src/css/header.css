@@ -6,14 +6,21 @@ margin-top: -60px;
     font-family: 'Gloria Hallelujah', sans-serif;
     text-align: center;
     font-size: 50px;
-
+text-decoration: none;
 
 }
+
+.text a{
+  color: black;
+    text-decoration: none;
+    
+    }
 
 .logo-app{
 
 margin-left: 80px;
 text-align: center;
+
 }
 
 .the-pic{
@@ -23,6 +30,14 @@ height: 200px;
 
 
 }
+.the-pic:hover{
+
+    height: 200px;
+    
+    cursor: pointer;
+    
+    }
+    
 
 
 

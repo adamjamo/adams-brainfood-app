@@ -1,9 +1,9 @@
 import "../css/App.css";
 import { useEffect } from "react";
 import { useState } from "react";
-import "../css/App.css";
+
 import HandleVotes from "./HandleVotes";
-import Header from "./Header";
+
 import DeleteComment from "./DeleteComment";
 
 import { useParams } from "react-router-dom";
@@ -11,12 +11,15 @@ import { useParams } from "react-router-dom";
 import HandleCommentSubmit from "./HandleCommentSubmit";
 import SortComponent from "./SortComponent";
 
-function IndividualArticle() {
+function IndividualArticle({ addTask }) {
+  const [newComment, setNewComment] = useState("");
+
   const [commentData, setCommentData] = useState([]);
   const [articleData, setArticleData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { article_id } = useParams();
   const [err, setErr] = useState("");
+  const [taskInp, setTaskInp] = useState("");
 
   useEffect(() => {
     fetch(`https://adam-nc-news.herokuapp.com/api/articles/${article_id}`)
@@ -46,6 +49,31 @@ function IndividualArticle() {
       });
   }, []);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setIsLoading(true);
+    setErr(null);
+    fetch(
+      `https://adam-nc-news.herokuapp.com/api/articles/${article_id}/comments`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          username: "jessjelly",
+          body: `${newComment}`,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((json) => setCommentData((currData) => [json.comment, ...currData]))
+      .catch((err) => {
+        setNewComment("");
+        setErr("Something went wrong, please try again.");
+      });
+  };
+
   return (
     <div>
       {err && <div> {err}</div>}
@@ -56,11 +84,15 @@ function IndividualArticle() {
       <div className="Article_container">
         <div className="vote-button"></div>
         <ul>
-          <li>{articleData.title}</li>
+          <h1>{articleData.title}</h1>
+          <br></br>
           <p>Votes:{articleData.votes}</p>
-          <li> Author: {articleData.author}</li>
-
-          <li>{articleData.body}</li>
+          <br></br>
+          <p> Author: {articleData.author}</p>
+          <br></br>
+          <em>
+            <p className="article-body">{articleData.body}</p>
+          </em>
           <p>
             <div>
               <HandleVotes
@@ -74,16 +106,29 @@ function IndividualArticle() {
 
         <div className="comment-box">
           Comments:
-          <div>
-            <HandleCommentSubmit
-              article_id={articleData.article_id}
-              articleData={articleData}
-              setArticleData={setArticleData}
-              commentData={commentData}
-              setCommentData={setCommentData}
-              comment={commentData.body}
-            />
-          </div>
+          <form onSubmit={handleSubmit}>
+            <label>
+              <input
+                className="comment-form"
+                value={newComment}
+                input
+                type="text"
+                placeholder="Type away..."
+                onChange={(event) => setNewComment(event.target.value)}
+              />
+              <button
+                className="submit-comment"
+                type="submit"
+                onClick={() => {
+                  addTask(taskInp);
+                  setTaskInp("");
+                }}
+              >
+                Submit
+              </button>
+            </label>
+            <p></p>
+          </form>
           {commentData.map((comment) => {
             return (
               <div key={comment.comment_id} className="comment_container">
@@ -98,13 +143,13 @@ function IndividualArticle() {
                     setCommentData={setCommentData}
                   />
                 )}
-                <ul>
-                  <li>user:{comment.author}</li>
-                  <li>Comment votes:{comment.votes}</li>
-                  <li>THE COMMENT ID {comment.comment_id}</li>
-                  <li>{comment.body}</li>
-                </ul>
-                <div></div>
+
+                <h1>User: @{comment.author}</h1>
+                <br></br>
+                <p>Comment votes: {comment.votes}</p>
+
+                <br></br>
+                <p className="the-comment">{comment.body}</p>
               </div>
             );
           })}
