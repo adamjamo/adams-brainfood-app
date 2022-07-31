@@ -1,10 +1,48 @@
 @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
 
 
-.App-header {
-
+.text {
+margin-top: -60px;
     font-family: 'Gloria Hallelujah', sans-serif;
     text-align: center;
-    margin-left: 60px;
-    font-size: 200px;
+    font-size: 50px;
+text-decoration: none;
+
+}
+
+.text a{
+  color: black;
+    text-decoration: none;
+    
+    }
+
+.logo-app{
+
+margin-left: 80px;
+text-align: center;
+
+}
+
+.the-pic{
+
+height: 200px;
+
+
+
+}
+.the-pic:hover{
+
+    height: 200px;
+    
+    cursor: pointer;
+    
+    }
+    
+
+
+
+
+.hello-user{
+
+    font-family:'Gloria Hallelujah', sans-serif ;
 }

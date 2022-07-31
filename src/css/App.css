@@ -1,15 +1,11 @@
+body {
 
-
-.left, .right {
-  float: left;
-  width: 20%; /* The width is 20%, by default */
+  background-image: linear-gradient(rgb(130, 209, 236),rgb(255, 255, 255),rgb(140, 210, 234));
 }
 
-.main {
-  float: left;
-  width: 20%; /* The width is 20%, by default */
-background-color: aliceblue;
-}
+
+
+
 
 /* Use a media query to add a breakpoint at 800px: */
 @media screen and (max-width: 800px) {
@@ -22,31 +18,62 @@ background-color: aliceblue;
 
 .vote-button {
 
-
 }
 
 
 .vote-button:hover {
-
   cursor: pointer
 }
 
 
 
-.comment-box {
-width: 1100px;
-  background-color: white;
-  margin-bottom: 100px;
-    padding: 10px;
-  border-radius: 10px;
+
+
+
+.comment-form{
+
+padding: 20px;
+  border-radius: 20px;
+  width: 60%;
+
+  align-items: center;
+
+  
+
+
+  background-color: rgba(255, 255, 255, 0.553) ;
+height: 50px;
+padding: 2px;
+  box-shadow: rgba(47, 7, 51, 0.6) 4px 10px 30px;
+  margin-top: 20px;
+  margin-left: 40px;
+
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 10px;
+  color: black;
 }
 
 
 
-.Article_container {
-  width: 1199px;
-  background-color:  rgb(123, 206, 239);
-margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 10px;
+
+.submit-comment{
+  margin-left: 40px;
+  border-radius: 20px;
+}
+
+
+
+.the-comment{
+
+  font-size: 20px;
+}
+
+
+
+
+.article-body {
+
+
+  font-size: 20px;
+  text-decoration: italic;
 }
