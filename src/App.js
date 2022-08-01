@@ -5,7 +5,7 @@ import HomePage from "./pages/HomePage";
 import Header from "./components/Header";
 import DeleteComment from "./components/DeleteComment";
 import IndividualArticle from "./components/IndividualArticle";
-import AllArticles from "./components/AllArticles";
+import ErrorPage from "./components/ErrorPage";
 import Navbar from "./components/Nav";
 import "./css/App.css";
 
@@ -31,6 +31,7 @@ export default function App() {
               path="/articles/:article_id"
               element={<IndividualArticle />}
             />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </>
       </BrowserRouter>

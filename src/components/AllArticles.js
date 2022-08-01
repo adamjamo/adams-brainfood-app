@@ -47,6 +47,7 @@ function AllArticles() {
 
   return (
     <ul>
+      {error && <div> {error}</div>}
       {isLoading && <div className="all-articles-loading">Loading...</div>}
       <div className="sortby_container">
         <label for="sortBy"> Sort by:</label>
