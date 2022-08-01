@@ -1,16 +1,12 @@
 import "../css/App.css";
 import { useEffect } from "react";
 import { useState } from "react";
-
 import HandleVotes from "./HandleVotes";
-
 import DeleteComment from "./DeleteComment";
-
 import { useParams } from "react-router-dom";
 
 function IndividualArticle({ addTask }) {
   const [newComment, setNewComment] = useState("");
-
   const [commentData, setCommentData] = useState([]);
   const [articleData, setArticleData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -74,11 +70,13 @@ function IndividualArticle({ addTask }) {
       }
     )
       .then((response) => response.json())
-      .then((json) => setCommentData((currData) => [json.comment, ...currData]))
-      .catch((err) => {
-        setNewComment("");
-        setError("Something went wrong, please try again.");
-      });
+      .then((json) =>
+        setCommentData((currData) => [json.comment, ...currData])
+      );
+    setIsLoading(false).catch((err) => {
+      setNewComment("");
+      setError("Something went wrong, please try again.");
+    });
   };
 
   if (isLoading) {

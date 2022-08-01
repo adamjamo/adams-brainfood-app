@@ -5,9 +5,7 @@ import "../css/styles.css";
 
 function HandleVotes({ article_id, setArticleData, articleData }) {
   const [voteCount, setVoteCount] = useState(0);
-
   const [err, setErr] = useState("");
-
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -69,11 +67,11 @@ function HandleVotes({ article_id, setArticleData, articleData }) {
 
       <div className="vote-buttons">
         <button className="up-vote-button" onClick={HandleUpVotes}>
-          VOTE UP: {articleData.votes}
+          VOTE UP: {voteCount}
         </button>
 
         <button className="down-vote-button" onClick={HandleDownVotes}>
-          VOTE DOWN:{articleData.votes}
+          VOTE DOWN:{voteCount}
         </button>
       </div>
     </div>

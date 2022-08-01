@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../css/articles.css";
-import axios from "axios";
+
 import { useSearchParams } from "react-router-dom";
-import SortComponent from "./SortComponent";
+
 import { Link } from "react-router-dom";
 
 function AllArticles() {

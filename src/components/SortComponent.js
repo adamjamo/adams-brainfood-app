@@ -1,18 +1,13 @@
 import { useEffect } from "react";
-
 import { useState } from "react";
 import "../css/App.css";
-
 import { useSearchParams } from "react-router-dom";
 export default function SortBy() {
   const [articleData, setArticleData] = useState([]);
   const [authorData, setAuthorData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
   const [searchParams, setSearchParams] = useSearchParams();
   const [error, setError] = useState(null);
-
-  console.log(searchParams, "SEEING SEARCH?");
 
   useEffect(() => {
     setIsLoading(true);
@@ -32,7 +27,7 @@ export default function SortBy() {
         console.log(err);
         setError({ err });
       });
-  }, [searchParams]);
+  }, [articleData]);
   useEffect(() => {
     setIsLoading(true);
     fetch("https://https://adam-nc-news.herokuapp.com/api/users")
@@ -46,7 +41,7 @@ export default function SortBy() {
       .catch((err) => {
         setError({ err });
       });
-  }, []);
+  }, [authorData]);
 
   const HandleSortBy = (event) => {
     event.preventDefault();
@@ -66,6 +61,7 @@ export default function SortBy() {
 
   return (
     <div>
+      {isLoading && <div> Loading...</div>}
       <div className="sortby_container">
         <label for="sortBy"> Sort by:</label>
         <select id="sort" name="sortby" onChange={HandleSortBy}>

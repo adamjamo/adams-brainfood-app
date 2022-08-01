@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from "react";
 import "../css/articles.css";
-import SortBy from "./SortComponent";
+
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ErrorPage from "./ErrorPage";
 function Articles() {
   const [posts, setPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const { topic } = useParams();
-  const [articleData, setArticleData] = useState([]);
-  const [authorData, setAuthorData] = useState([]);
-  const [userInfo, setUserInfo] = useState({});
+
   const [searchParams, setSearchParams] = useSearchParams();
   const [error, setError] = useState(null);
 
@@ -36,7 +34,7 @@ function Articles() {
         return response.json();
       })
       .then((data) => {
-        setPosts(() => {
+        setSearchParams(() => {
           return data.articles;
         });
         setIsLoading(false);
