@@ -11,7 +11,9 @@ export default function Header({ article_id }) {
       <div className="logo-app">
         {
           <a href="/">
-            <img class="the-pic" src={BRAINFOODLOGO} />{" "}
+            <img class="the-pic" src={BRAINFOODLOGO}>
+              Brainfood logo
+            </img>
           </a>
         }
       </div>

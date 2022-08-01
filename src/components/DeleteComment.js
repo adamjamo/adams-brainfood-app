@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import "../css/App.css";
 
@@ -28,6 +28,7 @@ export default function DeleteComment({
 
   return (
     <div>
+      {err && { err }}
       {isLoading && <div> Deleting...</div>}
       <button onClick={handleDelete}>Delete Your Comment</button>;
     </div>

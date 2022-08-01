@@ -42,7 +42,7 @@ function Articles() {
       .catch((err) => {
         setError(err);
       });
-  }, [searchParams]);
+  }, [setSearchParams]);
 
   if (error) {
     return <ErrorPage />;
