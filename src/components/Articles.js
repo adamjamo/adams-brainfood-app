@@ -42,7 +42,8 @@ function Articles() {
       .catch((err) => {
         setError(err);
       });
-  });
+    // eslint-disable-next-line
+  }, [searchParams]);
 
   if (error) {
     return <ErrorPage />;
