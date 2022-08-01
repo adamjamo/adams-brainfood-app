@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 import HandleVotes from "./HandleVotes";
-import ErrorPage from "./ErrorPage";
+
 import DeleteComment from "./DeleteComment";
 
 import { useParams } from "react-router-dom";
@@ -36,7 +36,7 @@ function IndividualArticle({ addTask }) {
         console.log("Error");
         setError(err);
       });
-  }, []);
+  }, [article_id]);
 
   useEffect(() => {
     fetch(
@@ -54,7 +54,7 @@ function IndividualArticle({ addTask }) {
       .catch((err) => {
         setError(err);
       });
-  }, []);
+  }, [article_id]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
